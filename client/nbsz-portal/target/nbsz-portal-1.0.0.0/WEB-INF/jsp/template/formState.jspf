@@ -1,0 +1,5 @@
+<form:hidden path="id"/>
+<c:if test="${not empty item.id}">
+    <form:hidden path="srt"/>
+    <form:hidden path="userId"/>
+</c:if>
