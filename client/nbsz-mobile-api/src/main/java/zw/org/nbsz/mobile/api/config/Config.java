@@ -1,4 +1,4 @@
-package zw.org.nbsz.client.mobile.api.config;
+package zw.org.nbsz.mobile.api.config;
 
 import com.jolbox.bonecp.BoneCPDataSource;
 import org.springframework.context.annotation.*;
@@ -21,7 +21,7 @@ import org.hibernate.jpa.HibernatePersistenceProvider;
 // http://www.javacodegeeks.com/2013/11/how-to-using-propertysource-annotation-in-spring-4-with-java-7.html
 
 @PropertySources(value = {@PropertySource("classpath:application.properties")})
-@ComponentScan(basePackages = {"zw.org.nbsz.client.mobile.api.resource", "zw.org.nbsz.business.service.impl"})
+@ComponentScan(basePackages = {"zw.org.nbsz.mobile.api.resource", "zw.org.nbsz.business.service.impl"})
 @EnableJpaRepositories("zw.org.nbsz.business.repo")
 @EnableTransactionManagement
 @Configuration

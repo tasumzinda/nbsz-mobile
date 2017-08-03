@@ -30,6 +30,6 @@ public class UserLoginResource {
     @GET
     @Path("/get-user")
     public User getUser(@QueryParam("userName") String userName){
-        return userService.getByUserId(userName);
+        return userService.findByUserName(userName);
     }
 }
