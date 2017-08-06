@@ -5,7 +5,7 @@
         <label>Name</label>
         <form:input path="name" class="form-control"/>
         <p class="help-block">
-        <form:errors path="name"/>
+        <form:errors path="name" class="alert-danger"/>
         </p>
     </div>
     <div class="form-group">

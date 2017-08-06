@@ -134,6 +134,12 @@ public class PersonDataResource {
     }
     
     @GET
+    @Path("get-by-idNumber")
+    public Person getByIdNumber(@QueryParam("idNumber") String idNumber){
+        return personService.getByIdNumber(idNumber);
+    }
+    
+    @GET
     @Path("get-by-collect-site")
     public List<Person> getByCollectSite(@QueryParam("id") Long id){
         CollectSite collectSite = collectSiteService.get(id);

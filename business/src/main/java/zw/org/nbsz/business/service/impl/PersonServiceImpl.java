@@ -60,6 +60,11 @@ public class PersonServiceImpl implements PersonService{
     }
     
     @Override
+    public Person getByIdNumber(String idNumber){
+        return personRepo.findByIdNumber(idNumber);
+    }
+    
+    @Override
     public List<Person> getByCollectSite(CollectSite collectSite){
         return personRepo.findByCollectSite(collectSite);
     }

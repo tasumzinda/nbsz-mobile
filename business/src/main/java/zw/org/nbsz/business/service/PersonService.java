@@ -23,4 +23,6 @@ public interface PersonService extends GenericService<Person>{
     public List<Person> getByCollectSite(CollectSite collectSite);
     
     public String getLastDonorNumber();
+    
+    public Person getByIdNumber(String idNumber);
 }

@@ -27,4 +27,6 @@ public interface PersonRepo extends AbstractRepo<Person, Long>{
     public Person findByDonorNumber(@Param("donorNumber") String donorNumber);
     
     public List<Person> findByCollectSite(@Param("collectSite") CollectSite collectSite);
+    
+    public Person findByIdNumber(@Param("idNumber") String idNumber);
 }
