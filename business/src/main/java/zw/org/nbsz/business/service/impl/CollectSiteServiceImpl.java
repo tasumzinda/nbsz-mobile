@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import zw.org.nbsz.business.domain.Centre;
 import zw.org.nbsz.business.domain.CollectSite;
 import zw.org.nbsz.business.repo.CollectSiteRepo;
 import zw.org.nbsz.business.service.CollectSiteService;
@@ -42,5 +43,10 @@ public class CollectSiteServiceImpl implements CollectSiteService{
     @Override
     public List<CollectSite> getAll(){
         return collectSiteRepo.findAll();
+    }
+    
+    @Override
+    public List<CollectSite> getByCentre(Centre centre){
+        return collectSiteRepo.findByCentre(centre);
     }
 }

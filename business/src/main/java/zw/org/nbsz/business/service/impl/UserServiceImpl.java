@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import zw.org.nbsz.business.domain.Centre;
 import zw.org.nbsz.business.domain.User;
 import zw.org.nbsz.business.repo.UserRepo;
 import zw.org.nbsz.business.service.UserService;
@@ -38,6 +39,29 @@ public class UserServiceImpl implements UserService{
     }
     
     @Override
+    public Boolean checkDuplicate(User current, User old) {
+        if(current.getId() != null){
+            /**
+             * @param current is in existence
+             */
+            if(!current.getUserName().equals(old.getUserName())){
+                if(findByUserName(current.getUserName()) != null){
+                    return true;
+                }
+            }
+            
+        }else if(current.getId() == null){
+            /**
+             * @param current is new
+             */
+            if(findByUserName(current.getUserName()) != null){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    @Override
     public User get(Long id){
         if(id == null){
             throw new IllegalStateException("Item does not exist");
@@ -48,6 +72,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<User> getAll(){
         return userRepo.findAll();
+    }
+    
+    @Override
+    public List<User> getByCentre(Centre centre){
+        return userRepo.findByCentre(centre);
     }
     
     @Override

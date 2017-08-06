@@ -6,6 +6,8 @@
 
 package zw.org.nbsz.business.service;
 
+import java.util.List;
+import zw.org.nbsz.business.domain.Centre;
 import zw.org.nbsz.business.domain.User;
 
 /**
@@ -20,4 +22,8 @@ public interface UserService extends GenericService<User>{
     public String getCurrentUsername();
 
     public User getCurrentUser();
+    
+    public List<User> getByCentre(Centre centre);
+    
+    public Boolean checkDuplicate(User current, User old);
 }

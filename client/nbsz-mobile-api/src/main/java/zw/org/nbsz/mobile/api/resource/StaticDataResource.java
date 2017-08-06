@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.springframework.stereotype.Component;
 import zw.org.nbsz.business.domain.BankStaff;
@@ -105,8 +106,9 @@ public class StaticDataResource {
     
     @GET
     @Path("/collect-site")
-    public List<CollectSite> getCollectSites(){
-        return collectSiteService.getAll();
+    public List<CollectSite> getCollectSites(@QueryParam("id") Long id){
+        Centre centre = centreService.get(id);
+        return collectSiteService.getByCentre(centre);
     }
     
     @GET
@@ -117,7 +119,8 @@ public class StaticDataResource {
     
     @GET
     @Path("/user")
-    public List<User> getUsers(){
-        return userService.getAll();
+    public List<User> getUsers(@QueryParam("id") Long id){
+        Centre centre = centreService.get(id);
+        return userService.getByCentre(centre);
     }
 }
