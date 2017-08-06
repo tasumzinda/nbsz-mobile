@@ -41,5 +41,11 @@ public class UserValidator implements Validator{
         if ( ! user.getPassword().equals(user.getConfirmPassword())) {
             errors.rejectValue("confirmPassword", "password.confirm");
         }
+        if(user.getId() != null){
+            old = userService.get(user.getId());
+        }
+        if(userService.checkDuplicate(user, old)){
+            errors.rejectValue("userName", "item.duplicate");
+        }
     }
 }
