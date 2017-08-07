@@ -5,6 +5,7 @@
  */
 package zw.org.nbsz.business.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
@@ -62,6 +63,11 @@ public class PersonServiceImpl implements PersonService{
     @Override
     public Person getByIdNumber(String idNumber){
         return personRepo.findByIdNumber(idNumber);
+    }
+    
+    @Override
+    public Person getByFirstNameAndSurnameAndDateOfBirth(String firstName, String surname, Date dateOfBirth){
+        return personRepo.findByFirstNameAndSurnameAndDateOfBirth(firstName, surname, dateOfBirth);
     }
     
     @Override

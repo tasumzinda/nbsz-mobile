@@ -5,6 +5,7 @@
  */
 package zw.org.nbsz.mobile.api.resource;
 
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.ws.rs.GET;
@@ -87,7 +88,7 @@ public class PersonDataResource {
     }
     
     @GET
-    @Path("all-donors")
+    @Path("/all-donors")
     public Person getAllDonors(){
         Person p = null;
         for(Person item : personService.getAll()){
@@ -128,26 +129,33 @@ public class PersonDataResource {
     }
     
     @GET
-    @Path("get-by-surname")
+    @Path("/get-by-surname")
     public List<Person> getBySurname(@QueryParam("surname") String surname){
         return personService.getBySurname(surname);
     }
     
     @GET
-    @Path("get-by-idNumber")
+    @Path("/get-by-idNumber")
     public Person getByIdNumber(@QueryParam("idNumber") String idNumber){
         return personService.getByIdNumber(idNumber);
     }
     
     @GET
-    @Path("get-by-collect-site")
+    @Path("/get-by-details")
+    public Person getByFirstNameAndSurname(@QueryParam("firstName") String firstName, @QueryParam("surname") String surname, @QueryParam("dob") String dob){
+        Date dateOfBirth = DateUtil.getDateFromString(dob);
+        return personService.getByFirstNameAndSurnameAndDateOfBirth(firstName, surname, dateOfBirth);
+    }
+    
+    @GET
+    @Path("/get-by-collect-site")
     public List<Person> getByCollectSite(@QueryParam("id") Long id){
         CollectSite collectSite = collectSiteService.get(id);
         return personService.getByCollectSite(collectSite);
     }
     
     @GET
-    @Path("get-last-donor-num")
+    @Path("/get-last-donor-num")
     public String getPreviousDonorNumber(){
         return personService.getLastDonorNumber();
     }

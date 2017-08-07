@@ -6,6 +6,7 @@
 
 package zw.org.nbsz.business.service;
 
+import java.util.Date;
 import java.util.List;
 import zw.org.nbsz.business.domain.CollectSite;
 import zw.org.nbsz.business.domain.Person;
@@ -25,4 +26,6 @@ public interface PersonService extends GenericService<Person>{
     public String getLastDonorNumber();
     
     public Person getByIdNumber(String idNumber);
+    
+    public Person getByFirstNameAndSurnameAndDateOfBirth(String firstName, String surname, Date dateOfBirth);
 }

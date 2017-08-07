@@ -6,6 +6,7 @@
 
 package zw.org.nbsz.business.repo;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -29,4 +30,6 @@ public interface PersonRepo extends AbstractRepo<Person, Long>{
     public List<Person> findByCollectSite(@Param("collectSite") CollectSite collectSite);
     
     public Person findByIdNumber(@Param("idNumber") String idNumber);
+    
+    public Person findByFirstNameAndSurnameAndDateOfBirth(@Param("firstName") String firstName, @Param("surname") String surname, @Param("dateOfBirth") Date dateOfBirth);
 }
