@@ -31,11 +31,20 @@ public class UserServiceImpl implements UserService{
     private UserRepo userRepo;
     
     @Override
-    public User save(User user){
+    public User save(User t){
+        if (t.getId() == null) {
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            String hashedPassword = encoder.encode(t.getPassword());
+            t.setPassword(hashedPassword);
+            if(t.getUserId() == null)
+               t.setUserId(t.getUserName()); 
+            return userRepo.save(t);
+        }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String encodedPassword = encoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        return userRepo.save(user);
+        String hashedPassword = encoder.encode(t.getPassword());
+        t.setPassword(hashedPassword);
+        t.setUserId(t.getUserName());
+        return userRepo.save(t);
     }
     
     @Override

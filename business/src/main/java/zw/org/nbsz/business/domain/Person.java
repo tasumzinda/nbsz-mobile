@@ -126,6 +126,10 @@ public class Person implements Serializable{
     
     @Column(name = "LOG_DONOR")
     private String logDonor;
+    
+    @JoinColumn(name = "ID_DONORTYPE")
+    @ManyToOne
+    private DonorType donorType;
 
     public Person() {
     }
@@ -344,6 +348,14 @@ public class Person implements Serializable{
 
     public void setLogDonor(String logDonor) {
         this.logDonor = logDonor;
+    }
+
+    public DonorType getDonorType() {
+        return donorType;
+    }
+
+    public void setDonorType(DonorType donorType) {
+        this.donorType = donorType;
     }
     
 }

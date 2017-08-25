@@ -11,7 +11,7 @@
     <modules>
         <module>nbsz-mobile-api</module>
     <module>nbsz-portal</module>
-  </modules>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>zw.org.nbsz</groupId>

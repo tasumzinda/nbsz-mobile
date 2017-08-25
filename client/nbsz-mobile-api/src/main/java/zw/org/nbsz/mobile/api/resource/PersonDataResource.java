@@ -78,7 +78,9 @@ public class PersonDataResource {
     @GET
     @Path("/get-donor")
     public Person getDonor(@QueryParam("donorNumber")String donorNumber){
-        return personService.getByDonorNumber(donorNumber);
+        Person p = personService.getByDonorNumber(donorNumber);
+        p.setEntry(DateUtil.getStringFromDate(p.getEntryDate()));
+        return p;
     }
     
     @GET
