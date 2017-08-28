@@ -5,6 +5,7 @@
  */
 package zw.org.nbsz.mobile.api.resource;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
@@ -139,21 +140,32 @@ public class PersonDataResource {
     @GET
     @Path("/get-by-idNumber")
     public Person getByIdNumber(@QueryParam("idNumber") String idNumber){
-        return personService.getByIdNumber(idNumber);
+        Person p = personService.getByIdNumber(idNumber);
+        p.setEntry(DateUtil.getStringFromDate(p.getEntryDate()));
+        return p;
     }
     
     @GET
     @Path("/get-by-details")
     public Person getByFirstNameAndSurname(@QueryParam("firstName") String firstName, @QueryParam("surname") String surname, @QueryParam("dob") String dob){
         Date dateOfBirth = DateUtil.getDateFromString(dob);
-        return personService.getByFirstNameAndSurnameAndDateOfBirth(firstName, surname, dateOfBirth);
+        Person p = personService.getByFirstNameAndSurnameAndDateOfBirth(firstName, surname, dateOfBirth);
+        p.setEntry(DateUtil.getStringFromDate(p.getEntryDate()));
+        return p;
     }
     
     @GET
     @Path("/get-by-collect-site")
     public List<Person> getByCollectSite(@QueryParam("id") Long id){
         CollectSite collectSite = collectSiteService.get(id);
-        return personService.getByCollectSite(collectSite);
+        List<Person> list = new ArrayList<>();
+        for(Person p : personService.getByCollectSite(collectSite)){
+            if(p.getEntryDate() != null){
+                p.setEntry(DateUtil.getStringFromDate(p.getEntryDate()));
+            }
+            list.add(p);
+        }
+        return list;
     }
     
     @GET

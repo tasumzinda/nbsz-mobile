@@ -27,7 +27,7 @@
     <sec:http auto-config="true" access-denied-page="/acceessdenied.htm"  use-expressions="true" create-session="never" >
         <sec:intercept-url pattern="/resources/**" access="permitAll"/>
         <sec:intercept-url pattern="/login*" access="permitAll"/>
-        <sec:intercept-url pattern="/admin/**" access="permitAll"/>
+        <sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <sec:intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')"/>
         <!--<sec:intercept-url pattern="/**" access="hasRole('ROLE_DATA_CAPTURE_CLERK')"/>
         <sec:intercept-url pattern="/**" access="hasRole('ROLE_DATA_MANAGER')"/>-->

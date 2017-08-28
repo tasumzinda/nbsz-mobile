@@ -36,14 +36,14 @@ public class UserServiceImpl implements UserService{
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             String hashedPassword = encoder.encode(t.getPassword());
             t.setPassword(hashedPassword);
-            if(t.getUserId() == null)
-               t.setUserId(t.getUserName()); 
+            t.setUserId(t.getUserName()); 
             return userRepo.save(t);
         }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String hashedPassword = encoder.encode(t.getPassword());
         t.setPassword(hashedPassword);
-        t.setUserId(t.getUserName());
+        if(t.getUserId() == null)
+            t.setUserId(t.getUserName()); 
         return userRepo.save(t);
     }
     
