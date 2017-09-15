@@ -6,7 +6,10 @@
 
 package zw.org.nbsz.business.repo;
 
+import java.util.Date;
+import org.springframework.data.repository.query.Param;
 import zw.org.nbsz.business.domain.Donation;
+import zw.org.nbsz.business.domain.Person;
 
 /**
  *
@@ -14,4 +17,5 @@ import zw.org.nbsz.business.domain.Donation;
  */
 public interface DonationRepo extends AbstractRepo<Donation, Long>{
 
+    public Donation findByPersonAndDate(@Param("person") Person person, @Param("date") Date date);
 }

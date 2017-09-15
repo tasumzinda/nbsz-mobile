@@ -18,6 +18,7 @@ import zw.org.nbsz.business.domain.CollectSite;
 import zw.org.nbsz.business.domain.Person;
 import zw.org.nbsz.business.repo.PersonRepo;
 import zw.org.nbsz.business.service.PersonService;
+import zw.org.nbsz.business.util.dto.SearchDTO;
 
 /**
  *
@@ -51,6 +52,11 @@ public class PersonServiceImpl implements PersonService{
     }
     
     @Override
+    public List<Person> getByEntryDate(Date entryDate){
+        return personRepo.findByEntryDate(entryDate);
+    }
+    
+    @Override
     public List<Person> getBySurname(String surname){
         return personRepo.findBySurname(surname);
     }
@@ -66,8 +72,13 @@ public class PersonServiceImpl implements PersonService{
     }
     
     @Override
-    public Person getByFirstNameAndSurnameAndDateOfBirth(String firstName, String surname, Date dateOfBirth){
+    public List<Person> getByFirstNameAndSurnameAndDateOfBirth(String firstName, String surname, Date dateOfBirth){
         return personRepo.findByFirstNameAndSurnameAndDateOfBirth(firstName, surname, dateOfBirth);
+    }
+    
+    @Override
+    public List<Person> getBySurnameAndDateOfBirth(String surname, Date dateOfBirth){
+        return personRepo.findBySurnameAndDateOfBirth(surname, dateOfBirth);
     }
     
     @Override
@@ -84,5 +95,49 @@ public class PersonServiceImpl implements PersonService{
         String builder = "Select p.donorNumber from Person p where p.id=" + getLastInsertId();
         TypedQuery query = entityManager.createQuery(builder, String.class);
         return (String) query.getSingleResult();
+    }
+    
+    @Override
+    public List<Person> get(SearchDTO dto){
+        StringBuilder builder = new StringBuilder("from Person p");
+        int position = 0;
+        if(dto.getSearch(dto)){
+            builder.append(" where ");
+            if(dto.getCentre()!= null){
+                if(position == 0){
+                    builder.append("p.centre=:centre");
+                    position++;
+                }else{
+                    builder.append(" and p.centre=:centre");
+                }
+            }
+            if(dto.getCollectSite()!= null){
+                if(position == 0){
+                    builder.append("p.collectSite=:collectSite");
+                    position++;
+                }else{
+                    builder.append(" and p.collectSite=:collectSite");
+                }
+            }
+            if(dto.getEntryDate()!= null && dto.getEntryDate()!= null){
+                if(position == 0){
+                    builder.append("p.entryDate=:entryDate");
+                    position++;
+                }else{
+                    builder.append(" and p.entryDate=:entryDate");
+                }
+            }
+        }
+        TypedQuery query = entityManager.createQuery(builder.toString(), Person.class);
+        if(dto.getCentre()!= null){
+            query.setParameter("centre", dto.getCentre());
+        }
+        if(dto.getCollectSite()!= null){
+            query.setParameter("collectSite", dto.getCollectSite());
+        }
+        if(dto.getEntryDate()!= null){
+            query.setParameter("entryDate", dto.getEntryDate());
+        }
+        return (List<Person>) query.getResultList();
     }
 }

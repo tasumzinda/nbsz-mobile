@@ -29,7 +29,13 @@ public interface PersonRepo extends AbstractRepo<Person, Long>{
     
     public List<Person> findByCollectSite(@Param("collectSite") CollectSite collectSite);
     
+    public List<Person> findByEntryDate(@Param("entryDate") Date entryDate);
+    
     public Person findByIdNumber(@Param("idNumber") String idNumber);
     
-    public Person findByFirstNameAndSurnameAndDateOfBirth(@Param("firstName") String firstName, @Param("surname") String surname, @Param("dateOfBirth") Date dateOfBirth);
+    @Query("from Person p where p.surname=:surname and p.firstName=:firstName and p.dateOfBirth=:dateOfBirth")
+    public List<Person> findByFirstNameAndSurnameAndDateOfBirth(@Param("firstName") String firstName, @Param("surname") String surname, @Param("dateOfBirth") Date dateOfBirth);
+    
+    @Query("from Person p where p.surname=:surname and p.dateOfBirth=:dateOfBirth")
+    public List<Person> findBySurnameAndDateOfBirth(@Param("surname") String surname, @Param("dateOfBirth") Date dateOfBirth);
 }

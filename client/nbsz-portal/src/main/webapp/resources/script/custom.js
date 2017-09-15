@@ -20,23 +20,11 @@ $(function () {
 $(function () {
     $('.itemList').dataTable({"aaSorting": []});
 });
-$("#province").change(function () {
+$("#centre").change(function () {
     $this = $(this);
-    $("#district").val("");
-    $("#facility").val("");
-    $.get(path + "/gobal/getprovincedistricts", {"province": $this.val()}, function (data) {
-        $("#district").html(processDropDown(data));
-    });
-});
-$("#district").change(function () {
-    $this = $(this);
-    $("#facility").val("");
-    $("#mentor").val("");
-    $.get(path + "/gobal/getdistrictstations", {"district": $this.val()}, function (data) {
-        $("#facility").html(processDropDown(data));
-    });
-    $.get(path + "/gobal/getdistrictmentors", {"district": $this.val()}, function (data) {
-        $("#mentor").html(processDropDown(data));
+    $("#collectSite").val("");
+    $.get("http://localhost:8084/nbsz-portal/global/getcentrecollectsites", {"centre": $this.val()}, function (data) {
+        $("#collectSite").html(processDropDown(data));
     });
 });
 $("#startDate").datepicker({
@@ -45,6 +33,11 @@ $("#startDate").datepicker({
     dateFormat: 'dd/mm/yy'
 });
 $("#endDate").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: 'dd/mm/yy'
+});
+$("#entryDate").datepicker({
     changeMonth: true,
     changeYear: true,
     dateFormat: 'dd/mm/yy'

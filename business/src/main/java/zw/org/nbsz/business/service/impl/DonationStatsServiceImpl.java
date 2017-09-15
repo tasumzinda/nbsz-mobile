@@ -5,12 +5,14 @@
  */
 package zw.org.nbsz.business.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import zw.org.nbsz.business.domain.DonationStats;
+import zw.org.nbsz.business.domain.Person;
 import zw.org.nbsz.business.repo.DonationStatsRepo;
 import zw.org.nbsz.business.service.DonationStatsService;
 
@@ -40,5 +42,10 @@ public class DonationStatsServiceImpl implements DonationStatsService{
     @Override
     public List<DonationStats> getAll(){
         return repo.findAll();
+    }
+    
+    @Override
+    public DonationStats getByPersonAndEntryDate(Person p, Date entryDate){
+        return repo.findByPersonAndEntryDate(p, entryDate);
     }
 }

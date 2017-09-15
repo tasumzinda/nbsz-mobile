@@ -7,6 +7,7 @@ package zw.org.nbsz.business.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -81,6 +82,7 @@ public class Person implements Serializable{
     @Column(name = "DES_EMAIL")
     private String email;
     
+    @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "ID_COUNSELLOR")
     @ManyToOne
     private Counsellor counsellor;
@@ -130,6 +132,18 @@ public class Person implements Serializable{
     @JoinColumn(name = "ID_DONORTYPE")
     @ManyToOne
     private DonorType donorType;
+    
+    private String deferNotes;
+    
+    private int deferPeriod;
+    
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Temporal(TemporalType.DATE)
+    @Column(name = "DAT_DEFERRED")
+    private Date deferredDate;
+    
+    @Transient
+    private String deferDate;
 
     public Person() {
     }
@@ -356,6 +370,38 @@ public class Person implements Serializable{
 
     public void setDonorType(DonorType donorType) {
         this.donorType = donorType;
+    }
+
+    public String getDeferNotes() {
+        return deferNotes;
+    }
+
+    public void setDeferNotes(String deferNotes) {
+        this.deferNotes = deferNotes;
+    }
+
+    public int getDeferPeriod() {
+        return deferPeriod;
+    }
+
+    public void setDeferPeriod(int deferPeriod) {
+        this.deferPeriod = deferPeriod;
+    }
+
+    public Date getDeferredDate() {
+        return deferredDate;
+    }
+
+    public void setDeferredDate(Date deferredDate) {
+        this.deferredDate = deferredDate;
+    }
+
+    public String getDeferDate() {
+        return deferDate;
+    }
+
+    public void setDeferDate(String deferDate) {
+        this.deferDate = deferDate;
     }
     
 }

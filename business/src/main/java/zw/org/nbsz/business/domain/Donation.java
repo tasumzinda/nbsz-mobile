@@ -63,6 +63,12 @@ public class Donation implements Serializable{
     @Column(name = "COD_DONATIONKIND")
     private String donationKind;
     
+    /*@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinTable(name = "donation_incentive", joinColumns = {
+        @JoinColumn(name = "donation_id", nullable = false)}, inverseJoinColumns = {
+        @JoinColumn(name = "incentive_id", nullable = false)})
+    private Set<Incentive> incentives = new HashSet<>();*/
+    
     public Donation(){
         
     }
@@ -146,6 +152,14 @@ public class Donation implements Serializable{
     public void setDonationKind(String donationKind) {
         this.donationKind = donationKind;
     }
+
+    /*public Set<Incentive> getIncentives() {
+        return incentives;
+    }
+
+    public void setIncentives(Set<Incentive> incentives) {
+        this.incentives = incentives;
+    }*/
     
     
 }

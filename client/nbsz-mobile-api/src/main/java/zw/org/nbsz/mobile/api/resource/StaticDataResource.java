@@ -126,7 +126,7 @@ public class StaticDataResource {
     @Path("/user")
     public List<User> getUsers(@QueryParam("id") Long id){
         Centre centre = centreService.get(id);
-        return userService.getByCentre(centre);
+        return userService.getByCentreAndActive(centre, "Y");
     }
     
     @GET

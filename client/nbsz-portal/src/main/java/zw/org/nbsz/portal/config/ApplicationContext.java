@@ -25,7 +25,7 @@ import org.springframework.web.servlet.view.JstlView;
  * @author Judge Muzinda
  */
 @Configuration
-@ComponentScan(basePackages = {"zw.org.nbsz.portal.web.*", "zw.org.nbsz.business.service.impl"})
+@ComponentScan(basePackages = {"zw.org.nbsz.portal.web.*", "zw.org.nbsz.business.service.impl", "zw.org.nbsz.report.api.service.impl"})
 @ImportResource(value = {"classpath:applicationContext.xml", "classpath:securityContext.xml"})
 @PropertySource("classpath:application.properties")
 @EnableScheduling

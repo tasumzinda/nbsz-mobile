@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import zw.org.nbsz.business.domain.Centre;
 import zw.org.nbsz.business.domain.User;
+import zw.org.nbsz.business.domain.util.UserRole;
 import zw.org.nbsz.business.repo.UserRepo;
 import zw.org.nbsz.business.service.UserService;
 
@@ -37,6 +38,7 @@ public class UserServiceImpl implements UserService{
             String hashedPassword = encoder.encode(t.getPassword());
             t.setPassword(hashedPassword);
             t.setUserId(t.getUserName()); 
+            t.setActive("Y");
             return userRepo.save(t);
         }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -44,6 +46,7 @@ public class UserServiceImpl implements UserService{
         t.setPassword(hashedPassword);
         if(t.getUserId() == null)
             t.setUserId(t.getUserName()); 
+        t.setActive("Y");
         return userRepo.save(t);
     }
     
@@ -84,8 +87,8 @@ public class UserServiceImpl implements UserService{
     }
     
     @Override
-    public List<User> getByCentre(Centre centre){
-        return userRepo.findByCentre(centre);
+    public List<User> getByCentreAndActive(Centre centre, String active){
+        return userRepo.findByCentreAndActive(centre, active);
     }
     
     @Override

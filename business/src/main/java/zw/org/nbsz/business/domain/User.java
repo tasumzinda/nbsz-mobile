@@ -53,6 +53,9 @@ public class User implements Serializable{
     @Enumerated
     private UserRole userRole;
     
+    @Column(name = "LOG_ACTIVE")
+    private String active;
+    
     public User(){
         
     }
@@ -127,6 +130,14 @@ public class User implements Serializable{
 
     public void setUserRole(UserRole userRole) {
         this.userRole = userRole;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
     }
     
 }

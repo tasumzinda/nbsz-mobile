@@ -23,7 +23,7 @@ public interface UserService extends GenericService<User>{
 
     public User getCurrentUser();
     
-    public List<User> getByCentre(Centre centre);
+    public List<User> getByCentreAndActive(Centre centre, String active);
     
     public Boolean checkDuplicate(User current, User old);
 }

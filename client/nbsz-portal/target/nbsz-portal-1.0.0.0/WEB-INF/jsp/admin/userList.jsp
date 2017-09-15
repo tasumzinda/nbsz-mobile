@@ -5,7 +5,7 @@
             User List
         </div>
         <div class="panel-body">
-            <a href="user.form">New User</a> | <a href="index">User List</a>
+            <a href="user.form">New User</a> | <a href="user.list">User List</a>
             <hr/>
             <%@include file="../template/message.jspf" %>
             <div class="row">

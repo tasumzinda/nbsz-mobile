@@ -11,6 +11,7 @@
     <modules>
         <module>nbsz-mobile-api</module>
     <module>nbsz-portal</module>
+        <module>nbsz-report-api</module>
     </modules>
     <dependencies>
         <dependency>

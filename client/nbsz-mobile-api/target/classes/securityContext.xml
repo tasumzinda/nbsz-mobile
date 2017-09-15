@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/security/spring-security.xsd">
 
     <!-- Stateless RESTful services use BASIC authentication -->
-    <security:http create-session="stateless" pattern="/rest/**">
+    <security:http auto-config="true" create-session="stateless" pattern="/rest/**">
         <security:intercept-url pattern="/**" access="ROLE_REST"/>
         <security:http-basic/>
     </security:http>
@@ -26,5 +26,4 @@
     
     <!-- User Detail Services -->
     <bean id="userDetailsService" class="zw.org.nbsz.business.security.provider.UserDetailsServiceImpl"/>
-
 </beans>

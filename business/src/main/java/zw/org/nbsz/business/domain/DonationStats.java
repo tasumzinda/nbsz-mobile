@@ -6,16 +6,21 @@
 package zw.org.nbsz.business.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import zw.org.nbsz.business.domain.util.DonateDefer;
-import zw.org.nbsz.business.domain.util.Frequency;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import org.springframework.format.annotation.DateTimeFormat;
 import zw.org.nbsz.business.domain.util.PackType;
 import zw.org.nbsz.business.domain.util.PassFail;
 import zw.org.nbsz.business.domain.util.ReasonForTesting;
 import zw.org.nbsz.business.domain.util.YesNo;
+import zw.org.nbsz.business.domain.util.YesNoNA;
 
 /**
  *
@@ -27,49 +32,84 @@ public class DonationStats implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
-    private DonateDefer donateDefer;
+    @Enumerated
     private YesNo feelingWellToday;
+    @Enumerated
     private YesNo refusedToDonate;
+    @Enumerated
     private YesNo beenToMalariaArea;
+    @Enumerated
     private YesNo mealOrSnack;
+    @Enumerated
     private YesNo dangerousOccupation;
+    @Enumerated
     private YesNo rheumaticFever;
+    @Enumerated
     private YesNo lungDisease;
+    @Enumerated
     private YesNo cancer;
+    @Enumerated
     private YesNo diabetes;
+    @Enumerated
     private YesNo chronicMedicalCondition;
+    @Enumerated
     private YesNo beenToDentist;
+    @Enumerated
     private YesNo takenAntibiotics;
+    @Enumerated
     private YesNo injection;
+    @Enumerated
     private YesNo beenIll;
+    @Enumerated
     private YesNo receivedBloodTransfusion;
-    private Integer deferPeriod;
-    private YesNo sufferedFromMalaria;
-    private YesNo yellowJaundice;
     private YesNo hivTest;
+    @Enumerated
     private YesNo beenTestedForHiv;
+    @Enumerated
     private YesNo accidentalExposureToBlood;
+    @Enumerated
     private YesNo beenTattooedOrPierced;
+    @Enumerated
     private YesNo injectedWithIllegalDrugs;
+    @Enumerated
     private YesNo sexWithSomeoneWithUnknownBackground;
+    @Enumerated
     private YesNo exchangedMoneyForSex;
+    @Enumerated
     private YesNo trueForSexPartner;
+    @Enumerated
     private YesNo sufferedFromSTD;
-    private YesNo usedCondoms;
-    private Frequency howOftenDoYouUseCondoms;
-    private YesNo changeInMaritalStatus;
+    @Enumerated
+    private YesNoNA monogamousRelationship;
+    @Enumerated
     private YesNo sufferedFromNightSweats;
+    @Enumerated
     private PassFail copperSulphate;
+    @Enumerated
     private PassFail hamocue;
+    @Enumerated
     private PackType packType;
+    @Enumerated
     private ReasonForTesting reasonForTesting;
+    @Enumerated
     private YesNo contactWithPersonWithYellowJaundice;
+    @Enumerated
     private YesNo victimOfSexualAbuse;
     private Double weight;
-    private Double height;
     private String bloodPressure;
+    @Enumerated
+    private YesNo pregnant;
+    @Enumerated
+    private YesNo breastFeeding;
     @ManyToOne
     private Person person;
+    
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date entryDate;
+    
+    @Transient
+    private String entry;
     
     public DonationStats(){
         super();
@@ -81,14 +121,6 @@ public class DonationStats implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public DonateDefer getDonateDefer() {
-        return donateDefer;
-    }
-
-    public void setDonateDefer(DonateDefer donateDefer) {
-        this.donateDefer = donateDefer;
     }
 
     public YesNo getFeelingWellToday() {
@@ -211,30 +243,6 @@ public class DonationStats implements Serializable{
         this.receivedBloodTransfusion = receivedBloodTransfusion;
     }
 
-    public Integer getDeferPeriod() {
-        return deferPeriod;
-    }
-
-    public void setDeferPeriod(Integer deferPeriod) {
-        this.deferPeriod = deferPeriod;
-    }
-
-    public YesNo getSufferedFromMalaria() {
-        return sufferedFromMalaria;
-    }
-
-    public void setSufferedFromMalaria(YesNo sufferedFromMalaria) {
-        this.sufferedFromMalaria = sufferedFromMalaria;
-    }
-
-    public YesNo getYellowJaundice() {
-        return yellowJaundice;
-    }
-
-    public void setYellowJaundice(YesNo yellowJaundice) {
-        this.yellowJaundice = yellowJaundice;
-    }
-
     public YesNo getHivTest() {
         return hivTest;
     }
@@ -307,30 +315,6 @@ public class DonationStats implements Serializable{
         this.sufferedFromSTD = sufferedFromSTD;
     }
 
-    public YesNo getUsedCondoms() {
-        return usedCondoms;
-    }
-
-    public void setUsedCondoms(YesNo usedCondoms) {
-        this.usedCondoms = usedCondoms;
-    }
-
-    public Frequency getHowOftenDoYouUseCondoms() {
-        return howOftenDoYouUseCondoms;
-    }
-
-    public void setHowOftenDoYouUseCondoms(Frequency howOftenDoYouUseCondoms) {
-        this.howOftenDoYouUseCondoms = howOftenDoYouUseCondoms;
-    }
-
-    public YesNo getChangeInMaritalStatus() {
-        return changeInMaritalStatus;
-    }
-
-    public void setChangeInMaritalStatus(YesNo changeInMaritalStatus) {
-        this.changeInMaritalStatus = changeInMaritalStatus;
-    }
-
     public YesNo getSufferedFromNightSweats() {
         return sufferedFromNightSweats;
     }
@@ -387,14 +371,6 @@ public class DonationStats implements Serializable{
         this.weight = weight;
     }
 
-    public Double getHeight() {
-        return height;
-    }
-
-    public void setHeight(Double height) {
-        this.height = height;
-    }
-
     public String getBloodPressure() {
         return bloodPressure;
     }
@@ -419,4 +395,45 @@ public class DonationStats implements Serializable{
     public void setContactWithPersonWithYellowJaundice(YesNo contactWithPersonWithYellowJaundice) {
         this.contactWithPersonWithYellowJaundice = contactWithPersonWithYellowJaundice;
     }
+
+    public YesNo getPregnant() {
+        return pregnant;
+    }
+
+    public void setPregnant(YesNo pregnant) {
+        this.pregnant = pregnant;
+    }
+
+    public YesNo getBreastFeeding() {
+        return breastFeeding;
+    }
+
+    public void setBreastFeeding(YesNo breastFeeding) {
+        this.breastFeeding = breastFeeding;
+    }
+
+    public YesNoNA getMonogamousRelationship() {
+        return monogamousRelationship;
+    }
+
+    public void setMonogamousRelationship(YesNoNA monogamousRelationship) {
+        this.monogamousRelationship = monogamousRelationship;
+    }
+
+    public Date getEntryDate() {
+        return entryDate;
+    }
+
+    public void setEntryDate(Date entryDate) {
+        this.entryDate = entryDate;
+    }
+
+    public String getEntry() {
+        return entry;
+    }
+
+    public void setEntry(String entry) {
+        this.entry = entry;
+    }
+    
 }

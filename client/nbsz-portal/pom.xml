@@ -26,6 +26,11 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>zw.org.nbsz</groupId>
+            <artifactId>nbsz-report-api</artifactId>
+            <version>1.0.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

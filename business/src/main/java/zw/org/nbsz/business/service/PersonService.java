@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import zw.org.nbsz.business.domain.CollectSite;
 import zw.org.nbsz.business.domain.Person;
+import zw.org.nbsz.business.util.dto.SearchDTO;
 
 /**
  *
@@ -19,6 +20,10 @@ public interface PersonService extends GenericService<Person>{
 
     public List<Person> getBySurname(String surname);
     
+    public List<Person> getByEntryDate(Date entryDate);
+
+    public List<Person> get(SearchDTO dto);
+    
     public Person getByDonorNumber(String donorNumber);
     
     public List<Person> getByCollectSite(CollectSite collectSite);
@@ -27,5 +32,7 @@ public interface PersonService extends GenericService<Person>{
     
     public Person getByIdNumber(String idNumber);
     
-    public Person getByFirstNameAndSurnameAndDateOfBirth(String firstName, String surname, Date dateOfBirth);
+    public List<Person> getByFirstNameAndSurnameAndDateOfBirth(String firstName, String surname, Date dateOfBirth);
+    
+    public List<Person> getBySurnameAndDateOfBirth(String surname, Date dateOfBirth);
 }

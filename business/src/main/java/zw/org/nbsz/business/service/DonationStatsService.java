@@ -6,12 +6,14 @@
 
 package zw.org.nbsz.business.service;
 
+import java.util.Date;
 import zw.org.nbsz.business.domain.DonationStats;
+import zw.org.nbsz.business.domain.Person;
 
 /**
  *
  * @author Tasunungurwa Muzinda
  */
 public interface DonationStatsService extends GenericService<DonationStats>{
-
+    public DonationStats getByPersonAndEntryDate(Person p, Date entryDate);
 }

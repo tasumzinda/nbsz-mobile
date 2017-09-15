@@ -7,8 +7,6 @@ package zw.org.nbsz.portal.web.controller.admin;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -68,10 +66,10 @@ public class UserController extends BaseController{
             return setUpModel(model, user);
         }
         userService.save(user);
-        return "redirect: index?type=1";
+        return "redirect:user.list?type=1";
     }
 
-    @RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/user.list", "/"}, method = RequestMethod.GET)
     public String userList(ModelMap model, @RequestParam(required = false) Integer type) {
         model.addAttribute("message", new AppMessage.MessageBuilder().build());
         model.addAttribute("pageTitle", appPrefix + "User List");

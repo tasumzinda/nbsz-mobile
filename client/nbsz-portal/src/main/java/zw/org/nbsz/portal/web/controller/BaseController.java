@@ -39,4 +39,15 @@ abstract public class BaseController {
                 throw new IllegalArgumentException("Parameter provided not recognised :" + type);
         }
     }
+    
+    /*public void forceDownLoad(Workbook workbook, String name, HttpServletResponse response) {
+        try {
+            //Write the workbook in file system
+            response.setContentType("application/vnd.ms-excel");
+            response.setHeader("Content-Disposition", "filename=" + name + ".xls");
+            workbook.write(response.getOutputStream());
+        } catch (IOException e) {
+            System.err.println("Error occured writing file");
+        }
+    }*/
 }
