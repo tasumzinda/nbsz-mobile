@@ -100,6 +100,8 @@ public class Offer implements Serializable{
         @JoinColumn(name = "incentive_id", nullable = false)})
     private Set<Incentive> incentives = new HashSet<>();
     
+    private Integer pulse;
+    
     public Offer(){
         
     }
@@ -246,6 +248,14 @@ public class Offer implements Serializable{
 
     public void setIncentives(Set<Incentive> incentives) {
         this.incentives = incentives;
+    }
+
+    public Integer getPulse() {
+        return pulse;
+    }
+
+    public void setPulse(Integer pulse) {
+        this.pulse = pulse;
     }
     
     
