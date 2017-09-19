@@ -32,13 +32,13 @@
                         <th>&nbsp</th>
                         </tfoot>
                         <tbody>
-                            <c:forEach var="donor" items="${items}" >
+                            <c:forEach var="offer" items="${items}" >
                                 <tr>
-                                    <td>${donor.firstName}</td>
-                                    <td>${donor.surname}</td>
-                                    <td>${donor.collectSite.name}</td>
-                                    <td>${donor.entryDate}</td>
-                                    <td><a href="<c:url value="/admin/donor/form?id=${donor.id}"/>">Generate Form</a></td>
+                                    <td>${offer.person.firstName}</td>
+                                    <td>${offer.person.surname}</td>
+                                    <td>${offer.person.collectSite.name}</td>
+                                    <td>${offer.offerDate}</td>
+                                    <td><a href="<c:url value="/admin/donor/form?id=${offer.id}"/>" target="blank">Generate Form</a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
