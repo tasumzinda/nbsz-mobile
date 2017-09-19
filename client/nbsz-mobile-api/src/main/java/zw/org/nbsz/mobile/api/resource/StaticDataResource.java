@@ -19,6 +19,7 @@ import zw.org.nbsz.business.domain.CollectSite;
 import zw.org.nbsz.business.domain.DefferredReason;
 import zw.org.nbsz.business.domain.DonationType;
 import zw.org.nbsz.business.domain.DonorType;
+import zw.org.nbsz.business.domain.Incentive;
 import zw.org.nbsz.business.domain.MaritalStatus;
 import zw.org.nbsz.business.domain.Person;
 import zw.org.nbsz.business.domain.Profession;
@@ -29,6 +30,7 @@ import zw.org.nbsz.business.service.CollectSiteService;
 import zw.org.nbsz.business.service.DefferredReasonService;
 import zw.org.nbsz.business.service.DonationTypeService;
 import zw.org.nbsz.business.service.DonorTypeService;
+import zw.org.nbsz.business.service.IncentiveService;
 import zw.org.nbsz.business.service.MaritalStatusService;
 import zw.org.nbsz.business.service.PersonService;
 import zw.org.nbsz.business.service.ProfessionService;
@@ -72,6 +74,9 @@ public class StaticDataResource {
     
     @Resource
     private DonorTypeService donorTypeService;
+    
+    @Resource
+    private IncentiveService incentiveService;
     
     @GET
     @Path("/profession")
@@ -133,5 +138,11 @@ public class StaticDataResource {
     @Path("/donor-type")
     public List<DonorType> getDonorTypes(){
         return donorTypeService.getAll();
+    }
+    
+    @GET
+    @Path("/incentive")
+    public List<Incentive> getIncentives(){
+        return incentiveService.getAll();
     }
 }

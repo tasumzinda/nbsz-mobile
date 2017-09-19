@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -25,9 +26,6 @@ public class Incentive implements Serializable{
     private Long id;
     
     private String name;
-    
-    /*@ManyToMany(mappedBy = "incentives")
-    private Set<Donation> donations = new HashSet<>();*/
     
     public Incentive(){
         
@@ -48,14 +46,5 @@ public class Incentive implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-
-    /*public Set<Donation> getDonations() {
-        return donations;
-    }
-
-    public void setDonations(Set<Donation> donations) {
-        this.donations = donations;
-    }*/
-    
     
 }

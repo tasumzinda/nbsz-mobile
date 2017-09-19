@@ -8,6 +8,9 @@
                     <a href="${page}/admin/user/">Manage Users</a>
                 </td> 
                 <td>
+                    <a href="${page}/admin/incentive/">Manage Incentives</a>
+                </td>
+                <td>
                     <a href="${page}/admin/donor/donor-entry">Donors</a>
                 </td>
             </tr>

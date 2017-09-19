@@ -20,14 +20,15 @@ import zw.org.nbsz.business.domain.CollectSite;
 import zw.org.nbsz.business.domain.Counsellor;
 import zw.org.nbsz.business.domain.Donation;
 import zw.org.nbsz.business.domain.DonationStats;
+import zw.org.nbsz.business.domain.Offer;
 import zw.org.nbsz.business.domain.Person;
 import zw.org.nbsz.business.service.CollectSiteService;
 import zw.org.nbsz.business.service.CounsellorService;
 import zw.org.nbsz.business.service.DonationService;
 import zw.org.nbsz.business.service.DonationStatsService;
+import zw.org.nbsz.business.service.OfferService;
 import zw.org.nbsz.business.service.PersonService;
 import zw.org.nbsz.business.util.DateUtil;
-import zw.org.nbsz.mobile.api.dto.IdDonorNumberDTO;
 
 /**
  *
@@ -52,6 +53,9 @@ public class PersonDataResource {
 
     @Resource
     private DonationStatsService donationStatsService;
+    
+    @Resource
+    private OfferService offerService;
 
     @POST
     @Path("/donor")
@@ -137,6 +141,30 @@ public class PersonDataResource {
             item.setBloodType("P");
             item.setDonationKind("D");
             donationService.save(item);
+            Person p = item.getPerson();
+            Integer numDonations = p.getNumberOfDonations();
+            numDonations++;
+            p.setNumberOfDonations(numDonations);
+            personService.save(p);
+        } catch (Exception ex) {
+            System.out.println("-----+------+------+------+-----+");
+            System.out.println(ex.getMessage());
+            System.out.println("-----+------+------+------+-----+");
+            return 0L;
+        }
+        return 1L;
+    }
+    
+    @POST
+    @Path("/offer")
+    public Long createOffer(Offer item) {
+        try {
+            item.setOfferDate(DateUtil.getDateFromRest(item.getOffer()));
+            if(item.getDefer() != null){
+                item.setDeferDate(DateUtil.getDateFromRest(item.getDefer()));
+            }
+            item.setDonationKind("D");
+            offerService.save(item);
         } catch (Exception ex) {
             System.out.println("-----+------+------+------+-----+");
             System.out.println(ex.getMessage());

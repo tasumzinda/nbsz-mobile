@@ -25,7 +25,6 @@
                                 <td><a href="item.form?id=${item.id}">${item.name}</a></td>
                                 <td>
                                     <a href="item.form?id=${item.id}">Edit | </a>
-                                    <a href="item.delete?id=${item.id}">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>

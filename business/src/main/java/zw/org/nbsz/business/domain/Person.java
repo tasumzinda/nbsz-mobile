@@ -144,6 +144,12 @@ public class Person implements Serializable{
     
     @Transient
     private String deferDate;
+    
+    @Column(name = "NUM_OLDDONATIONS")
+    private Integer numberOfDonations;
+    
+    @Column(name = "COD_GROUP")
+    private String bloodGroup;
 
     public Person() {
     }
@@ -403,5 +409,22 @@ public class Person implements Serializable{
     public void setDeferDate(String deferDate) {
         this.deferDate = deferDate;
     }
+
+    public Integer getNumberOfDonations() {
+        return numberOfDonations;
+    }
+
+    public void setNumberOfDonations(Integer numberOfDonations) {
+        this.numberOfDonations = numberOfDonations;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+    
     
 }

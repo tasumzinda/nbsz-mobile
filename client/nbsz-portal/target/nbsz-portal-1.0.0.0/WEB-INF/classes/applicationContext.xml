@@ -21,6 +21,7 @@
                 <bean class="zw.org.nbsz.portal.web.convertor.UserRoleConvertor"/>
                 <bean class="zw.org.nbsz.portal.web.convertor.CentreConvertor"/>
                 <bean class="zw.org.nbsz.portal.web.convertor.CollectSiteConvertor"/>
+                <bean class="zw.org.nbsz.portal.web.convertor.IncentiveConvertor"/>
             </set>
         </property>
     </bean>

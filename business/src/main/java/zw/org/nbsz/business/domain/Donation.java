@@ -63,6 +63,9 @@ public class Donation implements Serializable{
     @Column(name = "COD_DONATIONKIND")
     private String donationKind;
     
+    @Column(name = "NUM_DONORAGE")
+    private Integer donorAge;
+    
     /*@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinTable(name = "donation_incentive", joinColumns = {
         @JoinColumn(name = "donation_id", nullable = false)}, inverseJoinColumns = {
@@ -160,6 +163,14 @@ public class Donation implements Serializable{
     public void setIncentives(Set<Incentive> incentives) {
         this.incentives = incentives;
     }*/
+
+    public Integer getDonorAge() {
+        return donorAge;
+    }
+
+    public void setDonorAge(Integer donorAge) {
+        this.donorAge = donorAge;
+    }
     
     
 }
