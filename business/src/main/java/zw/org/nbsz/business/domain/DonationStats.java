@@ -80,7 +80,7 @@ public class DonationStats implements Serializable{
     @Enumerated
     private YesNo sufferedFromSTD;
     @Enumerated
-    private YesNoNA monogamousRelationship;
+    private YesNo contactWithPersonWithHepatitisB;
     @Enumerated
     private YesNo sufferedFromNightSweats;
     @Enumerated
@@ -387,6 +387,13 @@ public class DonationStats implements Serializable{
         this.person = person;
     }
 
+    public YesNo getContactWithPersonWithHepatitisB() {
+        return contactWithPersonWithHepatitisB;
+    }
+
+    public void setContactWithPersonWithHepatitisB(YesNo contactWithPersonWithHepatitisB) {
+        this.contactWithPersonWithHepatitisB = contactWithPersonWithHepatitisB;
+    }
 
     public YesNo getContactWithPersonWithYellowJaundice() {
         return contactWithPersonWithYellowJaundice;
@@ -412,13 +419,6 @@ public class DonationStats implements Serializable{
         this.breastFeeding = breastFeeding;
     }
 
-    public YesNoNA getMonogamousRelationship() {
-        return monogamousRelationship;
-    }
-
-    public void setMonogamousRelationship(YesNoNA monogamousRelationship) {
-        this.monogamousRelationship = monogamousRelationship;
-    }
 
     public Date getEntryDate() {
         return entryDate;

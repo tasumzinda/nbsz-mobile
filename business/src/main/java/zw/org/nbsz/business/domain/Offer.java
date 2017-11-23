@@ -102,6 +102,8 @@ public class Offer implements Serializable{
     
     private Integer pulse;
     
+    private String offerTime;
+    
     public Offer(){
         
     }
@@ -257,6 +259,12 @@ public class Offer implements Serializable{
     public void setPulse(Integer pulse) {
         this.pulse = pulse;
     }
-    
-    
+
+    public String getOfferTime() {
+        return offerTime;
+    }
+
+    public void setOfferTime(String offerTime) {
+        this.offerTime = offerTime;
+    }
 }

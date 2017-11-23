@@ -93,9 +93,6 @@ public class PersonDataResource {
         if (item.getDateOfBirth() != null) {
             item.setDob(DateUtil.getStringFromDate(item.getDateOfBirth()));
         }
-        if (item.getDateOfBirth() != null) {
-            item.setDob(DateUtil.getStringFromDate(item.getDateOfBirth()));
-        }
         return item;
     }
 

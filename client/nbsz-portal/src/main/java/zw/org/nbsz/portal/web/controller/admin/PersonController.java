@@ -346,7 +346,7 @@ public class PersonController extends BaseController {
             float[] colWidths = {3f, 1f};
             healthTable.setWidths(colWidths);
             healthTable.setTableEvent(new TableEvent());
-            PdfPCell healthTableHeader = new PdfPCell(new Paragraph("HEALTH ASSESSMENT", labelFont));
+            PdfPCell healthTableHeader = new PdfPCell(new Paragraph("SECTION B", labelFont));
             healthTableHeader.setHorizontalAlignment(Element.ALIGN_LEFT);
             healthTableHeader.setVerticalAlignment(Element.ALIGN_MIDDLE);
             healthTableHeader.setBorder(Rectangle.NO_BORDER);
@@ -552,7 +552,7 @@ public class PersonController extends BaseController {
             riskTable.setSpacingAfter(10f);
             riskTable.setWidths(colWidths);
             riskTable.setTableEvent(new TableEvent());
-            PdfPCell riskTableHeader = new PdfPCell(new Paragraph("RISK ASSESSMENT", labelFont));
+            PdfPCell riskTableHeader = new PdfPCell(new Paragraph("SECTION B", labelFont));
             riskTableHeader.setHorizontalAlignment(Element.ALIGN_LEFT);
             riskTableHeader.setVerticalAlignment(Element.ALIGN_MIDDLE);
             riskTableHeader.setBorder(Rectangle.NO_BORDER);
@@ -570,7 +570,7 @@ public class PersonController extends BaseController {
             reason.setHorizontalAlignment(Element.ALIGN_LEFT);
             reason.setVerticalAlignment(Element.ALIGN_MIDDLE);
             riskTable.addCell(reason);
-            PdfPCell testedLabel = new PdfPCell(new Paragraph("Have you ever been tested for HIV, Hepatitis or other test for an infectious agent?", generalFont));
+            PdfPCell testedLabel = new PdfPCell(new Paragraph("Have you or your sexual partner ever tested positive for HIV, Hepatitis or Syphilis?", generalFont));
             testedLabel.setHorizontalAlignment(Element.ALIGN_LEFT);
             testedLabel.setVerticalAlignment(Element.ALIGN_MIDDLE);
             riskTable.addCell(testedLabel);
@@ -578,14 +578,6 @@ public class PersonController extends BaseController {
             tested.setHorizontalAlignment(Element.ALIGN_LEFT);
             tested.setVerticalAlignment(Element.ALIGN_MIDDLE);
             riskTable.addCell(tested);
-            PdfPCell testingReasonLabel = new PdfPCell(new Paragraph("Why did you get tested?", generalFont));
-            testingReasonLabel.setHorizontalAlignment(Element.ALIGN_LEFT);
-            testingReasonLabel.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            riskTable.addCell(testingReasonLabel);
-            PdfPCell testingReason = new PdfPCell(new Paragraph(stats.getReasonForTesting()!= null ? stats.getReasonForTesting().getName() : "", generalFont));
-            testingReason.setHorizontalAlignment(Element.ALIGN_LEFT);
-            testingReason.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            riskTable.addCell(testingReason);
             PdfPCell illegalDrugsLabel = new PdfPCell(new Paragraph("Have you ever injected yourself or been injected with non-prescribed drugs?", generalFont));
             illegalDrugsLabel.setHorizontalAlignment(Element.ALIGN_LEFT);
             illegalDrugsLabel.setVerticalAlignment(Element.ALIGN_MIDDLE);
@@ -662,11 +654,11 @@ public class PersonController extends BaseController {
             label12.setVerticalAlignment(Element.ALIGN_MIDDLE);
             label12.setBorder(Rectangle.NO_BORDER);
             riskTable.addCell(label12);
-            PdfPCell monogamyLabel = new PdfPCell(new Paragraph("Have you been in a monogamous sexual relationship?", generalFont));
+            PdfPCell monogamyLabel = new PdfPCell(new Paragraph("Have you been in contact with someone suffering from HepatitisB?", generalFont));
             monogamyLabel.setHorizontalAlignment(Element.ALIGN_LEFT);
             monogamyLabel.setVerticalAlignment(Element.ALIGN_MIDDLE);
             riskTable.addCell(monogamyLabel);
-            PdfPCell monogamy = new PdfPCell(new Paragraph(stats.getMonogamousRelationship()!= null ? stats.getMonogamousRelationship().getName() : "", generalFont));
+            PdfPCell monogamy = new PdfPCell(new Paragraph(stats.getContactWithPersonWithHepatitisB()!= null ? stats.getContactWithPersonWithHepatitisB().getName() : "", generalFont));
             monogamy.setHorizontalAlignment(Element.ALIGN_LEFT);
             monogamy.setVerticalAlignment(Element.ALIGN_MIDDLE);
             riskTable.addCell(monogamy);

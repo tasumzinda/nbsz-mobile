@@ -54,6 +54,10 @@ public class Donation implements Serializable{
     @ManyToOne
     private Person person;
     
+    @JoinColumn(name = "ID_CENTRE")
+    @ManyToOne
+    private Centre city;
+    
     @Transient
     private String donationDate;
     
@@ -171,6 +175,12 @@ public class Donation implements Serializable{
     public void setDonorAge(Integer donorAge) {
         this.donorAge = donorAge;
     }
-    
-    
+
+    public Centre getCity() {
+        return city;
+    }
+
+    public void setCity(Centre city) {
+        this.city = city;
+    }
 }
