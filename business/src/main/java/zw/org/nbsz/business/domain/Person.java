@@ -7,11 +7,17 @@ package zw.org.nbsz.business.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -152,6 +158,12 @@ public class Person implements Serializable {
 
     @Column(name = "COD_ACCEPTED")
     private String accepted;
+    
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinTable(name = "person_special_notes", joinColumns = {
+        @JoinColumn(name = "person_id", nullable = false)}, inverseJoinColumns = {
+        @JoinColumn(name = "special_notes_id", nullable = false)})
+    private Set<SpecialNotes> specialNotes = new HashSet<>();
 
     public Person() {
     }
@@ -435,7 +447,13 @@ public class Person implements Serializable {
     public void setAccepted(String accepted) {
         this.accepted = accepted;
     }
-    
-    
 
+    public Set<SpecialNotes> getSpecialNotes() {
+        return specialNotes;
+    }
+
+    public void setSpecialNotes(Set<SpecialNotes> specialNotes) {
+        this.specialNotes = specialNotes;
+    }
+    
 }

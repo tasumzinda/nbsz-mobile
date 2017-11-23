@@ -6,7 +6,7 @@
                 ${pageTitle}
             </div>
             <div class="panel-body">
-                <a href="../index.htm">Option Tables</a> | <a href="item.form">New Form</a> | <a href="item.list">Form List</a><br/><br/>
+                <a href="../index.htm">Option Tables</a> | <a href="item.form">New Item</a> | <a href="item.list">Item List</a><br/><br/>
                 <%@include file="../template/message.jspf" %>
                 <div class="row">
                     <div class="col-lg-10">

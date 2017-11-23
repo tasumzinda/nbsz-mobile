@@ -23,6 +23,7 @@ import zw.org.nbsz.business.domain.Incentive;
 import zw.org.nbsz.business.domain.MaritalStatus;
 import zw.org.nbsz.business.domain.Person;
 import zw.org.nbsz.business.domain.Profession;
+import zw.org.nbsz.business.domain.SpecialNotes;
 import zw.org.nbsz.business.domain.User;
 import zw.org.nbsz.business.service.BankStaffService;
 import zw.org.nbsz.business.service.CentreService;
@@ -34,6 +35,7 @@ import zw.org.nbsz.business.service.IncentiveService;
 import zw.org.nbsz.business.service.MaritalStatusService;
 import zw.org.nbsz.business.service.PersonService;
 import zw.org.nbsz.business.service.ProfessionService;
+import zw.org.nbsz.business.service.SpecialNotesService;
 import zw.org.nbsz.business.service.UserService;
 
 /**
@@ -77,6 +79,9 @@ public class StaticDataResource {
     
     @Resource
     private IncentiveService incentiveService;
+    
+    @Resource
+    private SpecialNotesService specialNotesService;
     
     @GET
     @Path("/profession")
@@ -144,5 +149,11 @@ public class StaticDataResource {
     @Path("/incentive")
     public List<Incentive> getIncentives(){
         return incentiveService.getAll();
+    }
+    
+    @GET
+    @Path("/special-notes")
+    public List<SpecialNotes> getSpecialNoteses(){
+        return specialNotesService.getAll();
     }
 }
