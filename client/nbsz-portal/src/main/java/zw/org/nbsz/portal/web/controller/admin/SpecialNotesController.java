@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import zw.org.nbsz.business.domain.Incentive;
 import zw.org.nbsz.business.domain.SpecialNotes;
 import zw.org.nbsz.business.service.SpecialNotesService;
 import zw.org.nbsz.portal.util.AppMessage;

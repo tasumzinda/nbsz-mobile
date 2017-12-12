@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService{
     
     @Override
     public List<User> getByCentreAndActive(Centre centre, String active){
-        return userRepo.findByCentreAndActive(centre, active);
+        return userRepo.findByCentreAndActiveAndUserNameIsNotNull(centre, active);
     }
     
     @Override

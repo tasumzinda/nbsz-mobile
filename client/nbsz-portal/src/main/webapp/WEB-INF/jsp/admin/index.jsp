@@ -14,6 +14,11 @@
                     <a href="${page}/admin/donor/donor-entry">Donors</a>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="${page}/admin/adverse-effects/">Manage Adverse Effects</a>
+                </td>
+            </tr>
         </table>
     </div>
     <div>

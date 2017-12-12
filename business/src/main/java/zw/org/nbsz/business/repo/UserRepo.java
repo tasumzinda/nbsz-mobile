@@ -22,5 +22,5 @@ public interface UserRepo extends AbstractRepo<User, Long>{
     
     public User findByUserName(@Param("username") String userName);
     
-    public List<User> findByCentreAndActive(@Param("centre") Centre centre, @Param("active") String active);
+    public List<User> findByCentreAndActiveAndUserNameIsNotNull(@Param("centre") Centre centre, @Param("active") String active);
 }
