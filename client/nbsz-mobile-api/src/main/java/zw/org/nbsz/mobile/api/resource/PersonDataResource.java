@@ -135,7 +135,6 @@ public class PersonDataResource {
     public Long createDonation(Donation item) {
         try {
             item.setDate(DateUtil.getDateFromRest(item.getDonationDate()));
-            item.setBloodType("P");
             item.setDonationKind("D");
             donationService.save(item);
             Person p = item.getPerson();
