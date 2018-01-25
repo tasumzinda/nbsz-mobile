@@ -22,14 +22,12 @@ public enum PassFail {
     }
 
     public static PassFail get(Integer code){
-        switch (code){
-            case 1:
-                return PASS;
-            case 2:
-                return FAIL;
-            default:
-                throw new IllegalArgumentException("Parameter passed to method not recognized: " + code);
+        for(PassFail item : values()){
+            if(item.code.equals(code)){
+                return item;
+            }
         }
+        throw new IllegalArgumentException("Parameter provided to method is not recognized: " + code);
     }
 
     public String getName(){

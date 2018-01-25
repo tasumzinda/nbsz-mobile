@@ -26,7 +26,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.User;
 import zw.org.nbsz.business.domain.util.UserRole;
-//import zw.org.nbsz.business.domain.UserRole;
 import zw.org.nbsz.business.service.UserService;
 
 /**

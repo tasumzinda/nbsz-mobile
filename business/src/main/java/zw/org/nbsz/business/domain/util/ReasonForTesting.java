@@ -22,20 +22,12 @@ public enum ReasonForTesting {
     }
 
     public static ReasonForTesting get(Integer code){
-        switch ((code)){
-            case 1:
-                return VOLUNTARY;
-            case 2:
-                return EMPLOYMENT;
-            case 3:
-                return INSURANCE;
-            case 4:
-                return MEDICAL_ADVICE;
-            case 5:
-                return OTHER;
-            default:
-                throw new IllegalArgumentException("Parameter provided to method is not recognized: " + code);
+        for(ReasonForTesting item : values()){
+            if(item.equals(item)){
+                return item;
+            }
         }
+        throw new IllegalArgumentException("Parameter provided to method is not recognized: " + code);
     }
 
     public String getName(){

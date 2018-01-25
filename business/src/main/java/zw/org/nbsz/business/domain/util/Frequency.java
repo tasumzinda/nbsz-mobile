@@ -22,14 +22,12 @@ public enum Frequency {
         }
 
         public static Frequency get(Integer code){
-            switch (code){
-                case 1:
-                    return ALWAYS;
-                case 2:
-                    return SOMETIMES;
-                default:
-                    throw new IllegalArgumentException("Parameter provided to method is not recognized: " + code);
+            for(Frequency item : values()){
+                if(item.equals(item)){
+                    return item;
+                }
             }
+            throw new IllegalArgumentException("Parameter provided to method is not recognized: " + code);
         }
 
         public String getName(){

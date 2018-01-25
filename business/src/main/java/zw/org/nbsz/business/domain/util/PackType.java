@@ -22,18 +22,12 @@ public enum PackType {
     }
 
     public static PackType get(Integer code){
-        switch (code){
-            case 1:
-                return SINGLE;
-            case 2:
-                return DRY;
-            case 3:
-                return TRIPLE;
-            case 4:
-                return QUADRUPLE;
-            default:
-                throw new IllegalArgumentException("Parameter passed to method not recognized: " + code);
+        for(PackType item : values()){
+            if(item.code.equals(code)){
+                return item;
+            }
         }
+        throw new IllegalArgumentException("Parameter provided to method is not recognized: " + code);
     }
 
     public String getName(){

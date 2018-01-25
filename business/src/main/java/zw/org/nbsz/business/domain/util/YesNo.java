@@ -22,14 +22,12 @@ public enum YesNo {
     }
 
     public static YesNo get(Integer code) {
-        switch (code) {
-            case 1:
-                return YES;
-            case 2:
-                return NO;
-            default:
-                throw new IllegalArgumentException("Illegal parameter passed to method :" + code);
+        for(YesNo item : values()){
+            if(item.code.equals(code)){
+                return item;
+            }
         }
+        throw new IllegalArgumentException("Parameter provided to method is not recognized: " + code);
     }
 
     public Integer getCode() {
